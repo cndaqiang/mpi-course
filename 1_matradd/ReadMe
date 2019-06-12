@@ -1,0 +1,6 @@
+矩阵相加
+
+其实对于Fortran
+C[ca:cb,cc:cd]=A[aa:ab,ac:ad]+B[ba:bb,bc:bd]
+就可以
+
