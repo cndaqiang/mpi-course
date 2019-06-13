@@ -5,12 +5,12 @@ program test
 !    include "mpif.h"
 !若m_mpi_my中含有include "mpif.h"，就不用再include了，报错
 !而且lmat中也不能引
-    INTEGER :: A(5,5),B(5,5),C(5),D(5)
-    INTEGER :: M=5,olddisp=4
+    INTEGER :: A(6,6),B(6,6),C(6),D(6)
+    INTEGER :: M=6
     INTEGER :: Htype
     call MPI_start()
 
-    call sublamt(M,MPI_INTEGER,kind(A(1,1)),Htype)
+    call sublamt(M,2,MPI_INTEGER,kind(A(1,1)),Htype)
     call MPI_TYPE_COMMIT(Htype,mpi_ierr)
     A=2
     B=0
@@ -23,13 +23,14 @@ program test
     if(node .eq. 1) write(*,*) B(3,:)
     if(node .eq. 1) write(*,*) B(4,:)
     if(node .eq. 1) write(*,*) B(5,:)
+    if(node .eq. 1) write(*,*) B(6,:)
     !call MPI_TYPE_FREE(Htype,mpi_ierr)
 
 
 
     !c=1
     !d=1
-    !call MPI_TYPE_INDEXED(5,c,d,MPI_INTEGER,Htype)
+    !call MPI_TYPE_INDEXED(6,c,d,MPI_INTEGER,Htype)
     !if(node .eq. 0) write(*,*) kind(M)
     !MPI_TYPE_INDEXED(count,array_of_blocklengths,array_of_displacemets,oldtype,newtype)
 			
