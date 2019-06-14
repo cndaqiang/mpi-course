@@ -5,12 +5,12 @@ program test
 !    include "mpif.h"
 !若m_mpi_my中含有include "mpif.h"，就不用再include了，报错
 !而且lmat中也不能引
-    INTEGER :: A(6,6),B(6,6),C(6),D(6)
+    REAL :: A(6,6),B(6,6),C(6),D(6)
     INTEGER :: M=6
     INTEGER :: Htype
     call MPI_start()
 
-    call sublamt(M,2,MPI_INTEGER,kind(A(1,1)),Htype)
+    call sublamt(M,2,2,MPI_REAL,Htype)
     call MPI_TYPE_COMMIT(Htype,mpi_ierr)
     A=0
     if(node .eq. 0 ) A=2
